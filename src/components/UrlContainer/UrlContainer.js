@@ -3,13 +3,12 @@ import './UrlContainer.css';
 
 const UrlContainer = ({ urls }) => {
   const urlEls = urls.map(url => {
-    console.log('here', url.title)
+    console.log('here', url)
     return (
-      <div className="url" key={url.id}>
+      <div className="url">
         <h3>{url.title}</h3>
         <a href={url.short_url} target="blank">{url.short_url}</a>
         <p>{url.long_url}</p>
-        <p>{url.id}</p>
       </div>
     )
   });

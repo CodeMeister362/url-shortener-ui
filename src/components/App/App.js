@@ -23,12 +23,23 @@ export class App extends Component {
       headers: {
         'Content-Type' : 'application/json'
       },
-      body:JSON.stringify(newURL)
+      body: JSON.stringify(newURL)
     })
     .then(response => {
-      response.json()
+      if (!response.ok) {
+        throw new Error('Error: ', response.status);
+      } else {
+        return response.json();
+      }
     })
-    .then(data => this.setState({ urls: [...this.state.urls, data]}))
+    .then(data => {
+      this.setState(prevState => ({
+        urls: [...prevState.urls, data]
+      }));
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   }
 
   render() {
