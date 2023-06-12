@@ -7,18 +7,23 @@ describe('user flows', () => {
     cy.visit('http://localhost:3000/')
   })
 
-  it.skip('When a user visits the page, they can view the page title and the existing shortened URLs', () => {
+  it('When a user visits the page, they can view the page title and the existing shortened URLs', () => {
     cy.get('header > h1').contains('URL Shortener')
     cy.get('.url').first().contains('h3', 'Awesome photo')
+    cy.get('.url').first().contains('a', 'http://localhost:3001/useshorturl/1')
     cy.get('.url').last().contains('h3', 'ghgh')
+    cy.get('.url').last().contains('a', 'http://localhost:3001/useshorturl/3')
   })
 
-  it.skip('When a user visits the page, they can view the Form with the proper inputs', () => {
+  it('When a user visits the page, they can view the Form with the proper inputs', () => {
     cy.get('input').first().should('have.attr', 'name')
+    cy.get('input').first().should('have.attr', 'type')
     cy.get('[placeholder="URL to Shorten..."]').should('have.attr', 'name')
+    cy.get('[placeholder="URL to Shorten..."]').should('have.attr', 'type')
+    cy.get('button').contains('Shorten Please!')
   })
 
-  it.skip('When a user fills out the form, the information is reflected in the input fields', () => {
+  it('When a user fills out the form, the information is reflected in the input fields', () => {
     cy.get('input').first().type('hello')
     cy.get('input').last().type('world')
   })
