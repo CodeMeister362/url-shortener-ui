@@ -16,10 +16,10 @@ describe('user flows', () => {
   })
 
   it('When a user visits the page, they can view the Form with the proper inputs', () => {
+    cy.get('[placeholder="Title..."]').should('be.empty')
     cy.get('input').first().should('have.attr', 'name')
-    cy.get('input').first().should('have.attr', 'type')
     cy.get('[placeholder="URL to Shorten..."]').should('have.attr', 'name')
-    cy.get('[placeholder="URL to Shorten..."]').should('have.attr', 'type')
+    cy.get('[placeholder="URL to Shorten..."]').should('be.empty')
     cy.get('button').contains('Shorten Please!')
   })
 
